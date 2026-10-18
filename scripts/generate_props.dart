@@ -50,6 +50,7 @@ void main() {
       'version-author': 'String',
       'version-label': 'String',
       'metadata-blurhash': 'String',
+      'metadata-photos-size': 'WebDavNcMetadataPhotosSize',
     },
     'oc': {
       'checksums': 'WebDavOcChecksums',

@@ -1234,3 +1234,81 @@ mixin _$WebDavOcTagsXmlSerializableMixin {
   XmlElement toXmlElement({Map<String, String?> namespaces = const {}}) =>
       _$WebDavOcTagsToXmlElement(this as WebDavOcTags, namespaces: namespaces);
 }
+
+void _$WebDavNcMetadataPhotosSizeBuildXmlChildren(WebDavNcMetadataPhotosSize instance, XmlBuilder builder,
+    {Map<String, String> namespaces = const {}}) {
+  final width = instance.width;
+  final widthSerialized = width?.toString();
+  builder.element('width', nest: () {
+    if (widthSerialized != null) {
+      builder.text(widthSerialized);
+    }
+  });
+  final height = instance.height;
+  final heightSerialized = height?.toString();
+  builder.element('height', nest: () {
+    if (heightSerialized != null) {
+      builder.text(heightSerialized);
+    }
+  });
+}
+
+void _$WebDavNcMetadataPhotosSizeBuildXmlElement(WebDavNcMetadataPhotosSize instance, XmlBuilder builder,
+    {Map<String, String> namespaces = const {}}) {
+  builder.element('metadata-photos-size', namespace: 'http://nextcloud.org/ns', namespaces: namespaces, nest: () {
+    instance.buildXmlChildren(builder, namespaces: namespaces);
+  });
+}
+
+WebDavNcMetadataPhotosSize _$WebDavNcMetadataPhotosSizeFromXmlElement(XmlElement element) {
+  final width = element.getElement('width')?.getText();
+  final height = element.getElement('height')?.getText();
+  return WebDavNcMetadataPhotosSize(
+      width: width != null ? int.parse(width) : null, height: height != null ? int.parse(height) : null);
+}
+
+List<XmlAttribute> _$WebDavNcMetadataPhotosSizeToXmlAttributes(WebDavNcMetadataPhotosSize instance,
+    {Map<String, String?> namespaces = const {}}) {
+  final attributes = <XmlAttribute>[];
+  return attributes;
+}
+
+List<XmlNode> _$WebDavNcMetadataPhotosSizeToXmlChildren(WebDavNcMetadataPhotosSize instance,
+    {Map<String, String?> namespaces = const {}}) {
+  final children = <XmlNode>[];
+  final width = instance.width;
+  final widthSerialized = width?.toString();
+  final widthConstructed = XmlElement(XmlName('width'), [], widthSerialized != null ? [XmlText(widthSerialized)] : []);
+  children.add(widthConstructed);
+  final height = instance.height;
+  final heightSerialized = height?.toString();
+  final heightConstructed =
+      XmlElement(XmlName('height'), [], heightSerialized != null ? [XmlText(heightSerialized)] : []);
+  children.add(heightConstructed);
+  return children;
+}
+
+XmlElement _$WebDavNcMetadataPhotosSizeToXmlElement(WebDavNcMetadataPhotosSize instance,
+    {Map<String, String?> namespaces = const {}}) {
+  return XmlElement(
+      XmlName('metadata-photos-size', namespaces['http://nextcloud.org/ns']),
+      [...namespaces.toXmlAttributes(), ...instance.toXmlAttributes(namespaces: namespaces)],
+      instance.toXmlChildren(namespaces: namespaces));
+}
+
+mixin _$WebDavNcMetadataPhotosSizeXmlSerializableMixin {
+  void buildXmlChildren(XmlBuilder builder, {Map<String, String> namespaces = const {}}) =>
+      _$WebDavNcMetadataPhotosSizeBuildXmlChildren(this as WebDavNcMetadataPhotosSize, builder, namespaces: namespaces);
+
+  void buildXmlElement(XmlBuilder builder, {Map<String, String> namespaces = const {}}) =>
+      _$WebDavNcMetadataPhotosSizeBuildXmlElement(this as WebDavNcMetadataPhotosSize, builder, namespaces: namespaces);
+
+  List<XmlAttribute> toXmlAttributes({Map<String, String?> namespaces = const {}}) =>
+      _$WebDavNcMetadataPhotosSizeToXmlAttributes(this as WebDavNcMetadataPhotosSize, namespaces: namespaces);
+
+  List<XmlNode> toXmlChildren({Map<String, String?> namespaces = const {}}) =>
+      _$WebDavNcMetadataPhotosSizeToXmlChildren(this as WebDavNcMetadataPhotosSize, namespaces: namespaces);
+
+  XmlElement toXmlElement({Map<String, String?> namespaces = const {}}) =>
+      _$WebDavNcMetadataPhotosSizeToXmlElement(this as WebDavNcMetadataPhotosSize, namespaces: namespaces);
+}

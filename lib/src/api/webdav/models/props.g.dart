@@ -470,6 +470,17 @@ void _$WebDavPropWithoutValuesBuildXmlChildren(WebDavPropWithoutValues instance,
       });
     }
   }
+  final ncMetadataPhotosSize = instance.ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeSerialized = ncMetadataPhotosSize;
+  if (ncMetadataPhotosSizeSerialized != null) {
+    for (final value in ncMetadataPhotosSizeSerialized) {
+      builder.element('metadata-photos-size', namespace: 'http://nextcloud.org/ns', isSelfClosing: true, nest: () {
+        if (value != null) {
+          builder.text(value);
+        }
+      });
+    }
+  }
   final ocChecksums = instance.ocChecksums;
   final ocChecksumsSerialized = ocChecksums;
   if (ocChecksumsSerialized != null) {
@@ -796,6 +807,10 @@ WebDavPropWithoutValues _$WebDavPropWithoutValuesFromXmlElement(XmlElement eleme
       .getElements('metadata-blurhash', namespace: 'http://nextcloud.org/ns')
       ?.map((e) => e.getText())
       .whereType<String>();
+  final ncMetadataPhotosSize = element
+      .getElements('metadata-photos-size', namespace: 'http://nextcloud.org/ns')
+      ?.map((e) => e.getText())
+      .whereType<String>();
   final ocChecksums = element
       .getElements('checksums', namespace: 'http://owncloud.org/ns')
       ?.map((e) => e.getText())
@@ -891,6 +906,7 @@ WebDavPropWithoutValues _$WebDavPropWithoutValuesFromXmlElement(XmlElement eleme
       ncVersionAuthor: ncVersionAuthor?.toList(),
       ncVersionLabel: ncVersionLabel?.toList(),
       ncMetadataBlurhash: ncMetadataBlurhash?.toList(),
+      ncMetadataPhotosSize: ncMetadataPhotosSize?.toList(),
       ocChecksums: ocChecksums?.toList(),
       ocCommentsCount: ocCommentsCount?.toList(),
       ocCommentsHref: ocCommentsHref?.toList(),
@@ -1217,6 +1233,13 @@ List<XmlNode> _$WebDavPropWithoutValuesToXmlChildren(WebDavPropWithoutValues ins
       XmlName('metadata-blurhash', namespaces['http://nextcloud.org/ns']), [], e != null ? [XmlText(e)] : [], true));
   if (ncMetadataBlurhashConstructed != null) {
     children.addAll(ncMetadataBlurhashConstructed);
+  }
+  final ncMetadataPhotosSize = instance.ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeSerialized = ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeConstructed = ncMetadataPhotosSizeSerialized?.map((e) => XmlElement(
+      XmlName('metadata-photos-size', namespaces['http://nextcloud.org/ns']), [], e != null ? [XmlText(e)] : [], true));
+  if (ncMetadataPhotosSizeConstructed != null) {
+    children.addAll(ncMetadataPhotosSizeConstructed);
   }
   final ocChecksums = instance.ocChecksums;
   final ocChecksumsSerialized = ocChecksums;
@@ -1688,6 +1711,13 @@ void _$WebDavPropBuildXmlChildren(WebDavProp instance, XmlBuilder builder,
       builder.text(ncMetadataBlurhashSerialized);
     });
   }
+  final ncMetadataPhotosSize = instance.ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeSerialized = ncMetadataPhotosSize;
+  if (ncMetadataPhotosSizeSerialized != null) {
+    builder.element('metadata-photos-size', namespace: 'http://nextcloud.org/ns', nest: () {
+      ncMetadataPhotosSizeSerialized.buildXmlChildren(builder, namespaces: namespaces);
+    });
+  }
   final ocChecksums = instance.ocChecksums;
   final ocChecksumsSerialized = ocChecksums;
   if (ocChecksumsSerialized != null) {
@@ -1859,6 +1889,7 @@ WebDavProp _$WebDavPropFromXmlElement(XmlElement element) {
   final ncVersionAuthor = element.getElement('version-author', namespace: 'http://nextcloud.org/ns')?.getText();
   final ncVersionLabel = element.getElement('version-label', namespace: 'http://nextcloud.org/ns')?.getText();
   final ncMetadataBlurhash = element.getElement('metadata-blurhash', namespace: 'http://nextcloud.org/ns')?.getText();
+  final ncMetadataPhotosSize = element.getElement('metadata-photos-size', namespace: 'http://nextcloud.org/ns');
   final ocChecksums = element.getElement('checksums', namespace: 'http://owncloud.org/ns');
   final ocCommentsCount = element.getElement('comments-count', namespace: 'http://owncloud.org/ns')?.getText();
   final ocCommentsHref = element.getElement('comments-href', namespace: 'http://owncloud.org/ns')?.getText();
@@ -1964,6 +1995,8 @@ WebDavProp _$WebDavPropFromXmlElement(XmlElement element) {
       ncVersionAuthor: ncVersionAuthor,
       ncVersionLabel: ncVersionLabel,
       ncMetadataBlurhash: ncMetadataBlurhash,
+      ncMetadataPhotosSize:
+          ncMetadataPhotosSize != null ? WebDavNcMetadataPhotosSize.fromXmlElement(ncMetadataPhotosSize) : null,
       ocChecksums: ocChecksums != null ? WebDavOcChecksums.fromXmlElement(ocChecksums) : null,
       ocCommentsCount: ocCommentsCount != null ? int.parse(ocCommentsCount) : null,
       ocCommentsHref: ocCommentsHref,
@@ -2408,6 +2441,17 @@ List<XmlNode> _$WebDavPropToXmlChildren(WebDavProp instance, {Map<String, String
       : null;
   if (ncMetadataBlurhashConstructed != null) {
     children.add(ncMetadataBlurhashConstructed);
+  }
+  final ncMetadataPhotosSize = instance.ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeSerialized = ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeConstructed = ncMetadataPhotosSizeSerialized != null
+      ? XmlElement(
+          XmlName('metadata-photos-size', namespaces['http://nextcloud.org/ns']),
+          ncMetadataPhotosSizeSerialized.toXmlAttributes(namespaces: namespaces),
+          ncMetadataPhotosSizeSerialized.toXmlChildren(namespaces: namespaces))
+      : null;
+  if (ncMetadataPhotosSizeConstructed != null) {
+    children.add(ncMetadataPhotosSizeConstructed);
   }
   final ocChecksums = instance.ocChecksums;
   final ocChecksumsSerialized = ocChecksums;
@@ -2907,6 +2951,13 @@ void _$WebDavOcFilterRulesBuildXmlChildren(WebDavOcFilterRules instance, XmlBuil
       builder.text(ncMetadataBlurhashSerialized);
     });
   }
+  final ncMetadataPhotosSize = instance.ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeSerialized = ncMetadataPhotosSize;
+  if (ncMetadataPhotosSizeSerialized != null) {
+    builder.element('metadata-photos-size', namespace: 'http://nextcloud.org/ns', nest: () {
+      ncMetadataPhotosSizeSerialized.buildXmlChildren(builder, namespaces: namespaces);
+    });
+  }
   final ocChecksums = instance.ocChecksums;
   final ocChecksumsSerialized = ocChecksums;
   if (ocChecksumsSerialized != null) {
@@ -3079,6 +3130,7 @@ WebDavOcFilterRules _$WebDavOcFilterRulesFromXmlElement(XmlElement element) {
   final ncVersionAuthor = element.getElement('version-author', namespace: 'http://nextcloud.org/ns')?.getText();
   final ncVersionLabel = element.getElement('version-label', namespace: 'http://nextcloud.org/ns')?.getText();
   final ncMetadataBlurhash = element.getElement('metadata-blurhash', namespace: 'http://nextcloud.org/ns')?.getText();
+  final ncMetadataPhotosSize = element.getElement('metadata-photos-size', namespace: 'http://nextcloud.org/ns');
   final ocChecksums = element.getElement('checksums', namespace: 'http://owncloud.org/ns');
   final ocCommentsCount = element.getElement('comments-count', namespace: 'http://owncloud.org/ns')?.getText();
   final ocCommentsHref = element.getElement('comments-href', namespace: 'http://owncloud.org/ns')?.getText();
@@ -3184,6 +3236,8 @@ WebDavOcFilterRules _$WebDavOcFilterRulesFromXmlElement(XmlElement element) {
       ncVersionAuthor: ncVersionAuthor,
       ncVersionLabel: ncVersionLabel,
       ncMetadataBlurhash: ncMetadataBlurhash,
+      ncMetadataPhotosSize:
+          ncMetadataPhotosSize != null ? WebDavNcMetadataPhotosSize.fromXmlElement(ncMetadataPhotosSize) : null,
       ocChecksums: ocChecksums != null ? WebDavOcChecksums.fromXmlElement(ocChecksums) : null,
       ocCommentsCount: ocCommentsCount != null ? int.parse(ocCommentsCount) : null,
       ocCommentsHref: ocCommentsHref,
@@ -3630,6 +3684,17 @@ List<XmlNode> _$WebDavOcFilterRulesToXmlChildren(WebDavOcFilterRules instance,
       : null;
   if (ncMetadataBlurhashConstructed != null) {
     children.add(ncMetadataBlurhashConstructed);
+  }
+  final ncMetadataPhotosSize = instance.ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeSerialized = ncMetadataPhotosSize;
+  final ncMetadataPhotosSizeConstructed = ncMetadataPhotosSizeSerialized != null
+      ? XmlElement(
+          XmlName('metadata-photos-size', namespaces['http://nextcloud.org/ns']),
+          ncMetadataPhotosSizeSerialized.toXmlAttributes(namespaces: namespaces),
+          ncMetadataPhotosSizeSerialized.toXmlChildren(namespaces: namespaces))
+      : null;
+  if (ncMetadataPhotosSizeConstructed != null) {
+    children.add(ncMetadataPhotosSizeConstructed);
   }
   final ocChecksums = instance.ocChecksums;
   final ocChecksumsSerialized = ocChecksums;

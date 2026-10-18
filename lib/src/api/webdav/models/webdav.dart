@@ -291,3 +291,23 @@ class WebDavOcTags with _$WebDavOcTagsXmlSerializableMixin {
   @annotation.XmlElement(name: 'tag', namespace: namespaceOwncloud)
   final List<String>? tags;
 }
+
+// Allow either dimension to be omitted when the server returns partial photo metadata.
+@immutable
+@annotation.XmlSerializable(createMixin: true)
+@annotation.XmlRootElement(name: 'metadata-photos-size', namespace: namespaceNextcloud)
+class WebDavNcMetadataPhotosSize with _$WebDavNcMetadataPhotosSizeXmlSerializableMixin {
+  const WebDavNcMetadataPhotosSize({
+    this.width,
+    this.height,
+  });
+
+  factory WebDavNcMetadataPhotosSize.fromXmlElement(XmlElement element) =>
+      _$WebDavNcMetadataPhotosSizeFromXmlElement(element);
+
+  @annotation.XmlElement(name: 'width')
+  final int? width;
+
+  @annotation.XmlElement(name: 'height')
+  final int? height;
+}

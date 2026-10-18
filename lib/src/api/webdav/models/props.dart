@@ -55,6 +55,7 @@ class WebDavPropWithoutValues with _$WebDavPropWithoutValuesXmlSerializableMixin
     this.ncVersionAuthor,
     this.ncVersionLabel,
     this.ncMetadataBlurhash,
+    this.ncMetadataPhotosSize,
     this.ocChecksums,
     this.ocCommentsCount,
     this.ocCommentsHref,
@@ -116,6 +117,7 @@ class WebDavPropWithoutValues with _$WebDavPropWithoutValuesXmlSerializableMixin
     bool ncVersionAuthor = false,
     bool ncVersionLabel = false,
     bool ncMetadataBlurhash = false,
+    bool ncMetadataPhotosSize = false,
     bool ocChecksums = false,
     bool ocCommentsCount = false,
     bool ocCommentsHref = false,
@@ -174,6 +176,7 @@ class WebDavPropWithoutValues with _$WebDavPropWithoutValuesXmlSerializableMixin
         ncVersionAuthor = ncVersionAuthor ? const [null] : null,
         ncVersionLabel = ncVersionLabel ? const [null] : null,
         ncMetadataBlurhash = ncMetadataBlurhash ? const [null] : null,
+        ncMetadataPhotosSize = ncMetadataPhotosSize ? const [null] : null,
         ocChecksums = ocChecksums ? const [null] : null,
         ocCommentsCount = ocCommentsCount ? const [null] : null,
         ocCommentsHref = ocCommentsHref ? const [null] : null,
@@ -531,6 +534,14 @@ class WebDavPropWithoutValues with _$WebDavPropWithoutValuesXmlSerializableMixin
   final List<String?>? ncMetadataBlurhash;
 
   @annotation.XmlElement(
+    name: 'metadata-photos-size',
+    namespace: namespaceNextcloud,
+    includeIfNull: true,
+    isSelfClosing: true,
+  )
+  final List<String?>? ncMetadataPhotosSize;
+
+  @annotation.XmlElement(
     name: 'checksums',
     namespace: namespaceOwncloud,
     includeIfNull: true,
@@ -706,6 +717,7 @@ class WebDavProp with _$WebDavPropXmlSerializableMixin {
     this.ncVersionAuthor,
     this.ncVersionLabel,
     this.ncMetadataBlurhash,
+    this.ncMetadataPhotosSize,
     this.ocChecksums,
     this.ocCommentsCount,
     this.ocCommentsHref,
@@ -1028,6 +1040,13 @@ class WebDavProp with _$WebDavPropXmlSerializableMixin {
   final String? ncMetadataBlurhash;
 
   @annotation.XmlElement(
+    name: 'metadata-photos-size',
+    namespace: namespaceNextcloud,
+    includeIfNull: false,
+  )
+  final WebDavNcMetadataPhotosSize? ncMetadataPhotosSize;
+
+  @annotation.XmlElement(
     name: 'checksums',
     namespace: namespaceOwncloud,
     includeIfNull: false,
@@ -1187,6 +1206,7 @@ class WebDavOcFilterRules with _$WebDavOcFilterRulesXmlSerializableMixin {
     this.ncVersionAuthor,
     this.ncVersionLabel,
     this.ncMetadataBlurhash,
+    this.ncMetadataPhotosSize,
     this.ocChecksums,
     this.ocCommentsCount,
     this.ocCommentsHref,
@@ -1507,6 +1527,13 @@ class WebDavOcFilterRules with _$WebDavOcFilterRulesXmlSerializableMixin {
     includeIfNull: false,
   )
   final String? ncMetadataBlurhash;
+
+  @annotation.XmlElement(
+    name: 'metadata-photos-size',
+    namespace: namespaceNextcloud,
+    includeIfNull: false,
+  )
+  final WebDavNcMetadataPhotosSize? ncMetadataPhotosSize;
 
   @annotation.XmlElement(
     name: 'checksums',
