@@ -1,6 +1,6 @@
 name: Dart
 on:
-  pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: dart-${{ github.head_ref || github.run_id }}

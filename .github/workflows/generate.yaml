@@ -1,6 +1,6 @@
 name: Generate
 on:
-  pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: generate-${{ github.head_ref || github.run_id }}
